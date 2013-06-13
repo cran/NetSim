@@ -1,0 +1,10 @@
+## Use the R_HOME indirection to support installations of multiple R version
+PKG_LIBS = `$(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()"`
+
+## RInstanceFactory is not included in packages
+SOURCES = $(wildcard attribute/*.cpp io/*.cpp model/*.cpp model/*/*.cpp network/*.cpp processstate/*.cpp simulator/*.cpp utils/Random.cpp rwrapper/rwrapper_s*.cpp rwrapper/wrapper_m*.cpp rwrapper/wrapper_n*.cpp rwrapper/wrapper_p*.cpp rwrapper/rwrapper_a*.cpp rwrapper/rwrapper_utils.cpp)
+OBJECTS = $(SOURCES:.cpp=.o)
+
+## options suggested by Brian Ripley
+## commented out for CRAN submission
+# PKG_CPPFLAGS = -pedantic -Wall

@@ -1,0 +1,6 @@
+
+## Use the R_HOME indirection to support installations of multiple R version
+PKG_LIBS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "Rcpp:::LdFlags()")
+
+SOURCES = $(wildcard rwrapper/*.cpp attribute/*.cpp io/*.cpp model/*.cpp model/*/*.cpp network/*.cpp processstate/*.cpp simulator/*.cpp utils/Random.cpp)
+OBJECTS = $(SOURCES:.cpp=.o)
